@@ -58,7 +58,7 @@ func foo_3() {
 
 func foo_4() {
 	for i := 1; i <= 10; i++ {
-		if i % 2 == 0 {
+		if i%2 == 0 {
 			fmt.Println(i, "even")
 		} else {
 			fmt.Println(i, "odd")
@@ -76,9 +76,12 @@ func print_int(number int) {
 
 func foo_5(x int) {
 	switch x {
-	case 0: print_str("zero")
-	case 1: print_str("one")
-	default: print_str("no one")
+	case 0:
+		print_str("zero")
+	case 1:
+		print_str("one")
+	default:
+		print_str("no one")
 	}
 }
 
@@ -89,7 +92,7 @@ func foo_6() {
 }
 
 func foo_7() {
-	x := [5]float64{ 98, 93, 77, 82, 83 }
+	x := [5]float64{98, 93, 77, 82, 83}
 	var total float64 = 0
 	for i := 0; i < 5; i++ {
 		total += x[i]
@@ -98,7 +101,7 @@ func foo_7() {
 }
 
 func foo_8() {
-	x := [5]float64{ 98, 93, 77, 82, 83 }
+	x := [5]float64{98, 93, 77, 82, 83}
 	var total float64 = 0
 	for i := 0; i < len(x); i++ {
 		total += x[i]
@@ -107,7 +110,7 @@ func foo_8() {
 }
 
 func foo_9() {
-	x := [5]float64{ 98, 93, 77, 82, 83 }
+	x := [5]float64{98, 93, 77, 82, 83}
 	var total float64 = 0
 	for _, value := range x {
 		total += value
@@ -121,7 +124,7 @@ func foo_9() {
 // }
 
 func foo_11() {
-	arr := [5]float64{1,2,3,4,5}
+	arr := [5]float64{1, 2, 3, 4, 5}
 	x := arr[0:4]
 	fmt.Println(x)
 	y := arr[0:3]
@@ -129,13 +132,13 @@ func foo_11() {
 }
 
 func foo_12() {
-	slice1 := []int{1,2,3}
+	slice1 := []int{1, 2, 3}
 	slice2 := append(slice1, 4, 5)
 	fmt.Println(slice1, slice2)
 }
 
 func foo_13() {
-	slice1 := []int{1,2,3}
+	slice1 := []int{1, 2, 3}
 	slice2 := make([]int, 2)
 	copy(slice2, slice1)
 	fmt.Println(slice1, slice2)
@@ -151,7 +154,7 @@ func foo_14() {
 
 func average(xs []float64) float64 {
 	total := 0.0
-	for _, v:= range xs {
+	for _, v := range xs {
 		total += v
 	}
 	return total / float64(len(xs))
@@ -176,6 +179,21 @@ func even_generator() func() uint {
 		i += 2
 		return
 	}
+}
+
+func factorial(x uint) uint {
+	if x == 0 {
+		return 1
+	}
+	return x * factorial(x-1)
+}
+
+func first() {
+	fmt.Println("1st")
+}
+
+func second() {
+	fmt.Println("2nd")
 }
 
 func main() {
@@ -204,9 +222,9 @@ func main() {
 		fmt.Println("no")
 	}
 
-	fmt.Println(add(1,2,3,4))
+	fmt.Println(add(1, 2, 3, 4))
 
-	m := []int{1,2,3}
+	m := []int{1, 2, 3}
 	fmt.Println(add(m...))
 
 	x := 0
@@ -222,6 +240,10 @@ func main() {
 	for i := 0; i < 3; i++ {
 		fmt.Print(next_even())
 	}
-
 	
+	fmt.Println()
+	fmt.Println(factorial(5))
+
+	defer second()
+	first()
 }
