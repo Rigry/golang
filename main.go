@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func zero(x_ptr *int) {
-	*x_ptr = 0
+func zero(xPtr *int) {
+	*xPtr = 0
 }
 
-func one(x_ptr *int) {
-	*x_ptr = 1
+func one(xPtr *int) {
+	*xPtr = 1
 }
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	zero(&x)
 	fmt.Println(x)
 
-	x_ptr := new(int)
-	one(x_ptr)
-	fmt.Println(x_ptr)
+	xPtr := new(int)
+	one(xPtr)
+	fmt.Println(xPtr)
 }
