@@ -25,7 +25,7 @@ func (c *Circle) area() float64 {
 type Rectangle struct {
 	x1, y1, x2, y2 float64
 }
-func (r *Rectangle) area_r() float64 {
+func (r *Rectangle) area() float64 {
 	fmt.Println("Unknown")
 	return 1
 }
@@ -43,7 +43,17 @@ type Android struct {
 	Model string
 }
 
+type Shape interface {
+	area() float64
+}
 
+func totalArea(shapes ...Shape) float64 {
+	var area float64
+	for _, s := range shapes {
+		area += s.area()
+	}
+	return area
+}
 
 func main() {
 	// var c Circle
@@ -54,17 +64,19 @@ func main() {
 
 	fmt.Println(c.x, c.y, c.r)
 	fmt.Println(circleArea(c))
-	fmt.Println(c.area())
+	// fmt.Println(c.area())
 
 	r := Rectangle{0, 0, 10, 10}
-	fmt.Println(r.area_r())
+	fmt.Println(r.area())
 
 	a := new(Android)
 	a.Name = "Sam"
 	a.Person.Talk()
 	a.Talk()
+
+	fmt.Println(totalArea(c, &r))
 	// x := 5
-	// zero(&x)
+	// zero(&x)``
 	// fmt.Println(x)
 
 	// xPtr := new(int)
